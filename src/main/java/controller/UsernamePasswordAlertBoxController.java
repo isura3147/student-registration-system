@@ -13,6 +13,6 @@ public class UsernamePasswordAlertBoxController {
     @FXML
     public void btnOkOnAction(ActionEvent event) {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.close(); // Close the stage
+        stage.close();
     }
 }

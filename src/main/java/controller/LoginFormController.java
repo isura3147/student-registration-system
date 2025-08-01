@@ -3,6 +3,7 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -32,14 +33,16 @@ public class LoginFormController {
                 throw new RuntimeException(e);
             }
             stage.show();
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.close();
         }
         else {
             try {
                 stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/username_password_alert_box.fxml"))));
-                stage.show();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+            stage.show();
         }
     }
 
