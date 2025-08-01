@@ -16,20 +16,31 @@ public class LoginFormController {
     private Button btnLogin;
 
     @FXML
-    private PasswordField txtPassword;
-
-    @FXML
     private TextField txtUserName;
 
+    @FXML
+    private PasswordField txtPassword;
+
     Stage stage = new Stage();
+
     @FXML
     void btnLoginOnAction(ActionEvent event) {
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/student_registration_form.fxml"))));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (txtUserName.getText().equals("admin") && txtPassword.getText().equals("1234")) {
+            try {
+                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/student_registration_form.fxml"))));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.show();
         }
-        stage.show();
+        else {
+            try {
+                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/username_password_alert_box.fxml"))));
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
 }
