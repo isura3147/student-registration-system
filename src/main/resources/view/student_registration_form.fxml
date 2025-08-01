@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="358.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentRegistrationController">
+   <children>
+      <Label alignment="CENTER" layoutX="212.0" layoutY="33.0" prefHeight="43.0" prefWidth="175.0" text="Registration Form">
+         <font>
+            <Font name="Calisto MT Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="84.0" layoutY="106.0" text="Full Name">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="84.0" layoutY="149.0" prefHeight="18.0" prefWidth="54.0" text="Email">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtFullName" layoutX="212.0" layoutY="104.0" />
+      <TextField fx:id="txtEmail" layoutX="212.0" layoutY="147.0" />
+      <Label layoutX="84.0" layoutY="189.0" prefHeight="18.0" prefWidth="54.0" text="Gender">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="combobxCourse" layoutX="212.0" layoutY="231.0" prefWidth="150.0" />
+      <Label layoutX="84.0" layoutY="233.0" prefHeight="18.0" prefWidth="54.0" text="Course">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnReset" layoutX="245.0" layoutY="285.0" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="52.0" prefWidth="83.0" text="RESET">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9473684430122375" green="0.021052632480859756" blue="0.021052632480859756" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Button>
+      <Button fx:id="btnSubmit" layoutX="355.0" layoutY="285.0" mnemonicParsing="false" onAction="#btnSubmitOnAction" prefHeight="52.0" prefWidth="83.0" text="SUBMIT">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.21910330653190613" green="0.8421052694320679" blue="0.046783626079559326" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Button>
+      <RadioButton fx:id="btnMaleSelect" layoutX="212.0" layoutY="191.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="61.0" text="Male">
+         <toggleGroup>
+            <ToggleGroup fx:id="genderSelect" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="btnFemaleSelect" layoutX="287.0" layoutY="191.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="74.0" text="Female" toggleGroup="$genderSelect" />
+      <Button fx:id="btnViewDetails" layoutX="466.0" layoutY="285.0" mnemonicParsing="false" onAction="#btnViewDetailsOnAction" prefHeight="52.0" prefWidth="109.0" text="VIEW DETAILS">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.16563349962234497" green="0.05040000006556511" blue="0.8399999737739563" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Button>
+   </children>
+</AnchorPane>
