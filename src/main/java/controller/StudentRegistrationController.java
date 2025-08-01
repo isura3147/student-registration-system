@@ -15,8 +15,6 @@ public class StudentRegistrationController implements Initializable {
     @FXML
     public ToggleGroup genderSelect = new ToggleGroup();
 
-
-
     @FXML
     public Button btnSubmit;
 
@@ -25,6 +23,12 @@ public class StudentRegistrationController implements Initializable {
 
     @FXML
     public RadioButton btnFemaleSelect;
+
+    @FXML
+    public Button btnViewDetails;
+
+    @FXML
+    public Button btnReset;
 
     @FXML
     private ComboBox<String> combobxCourse;
@@ -62,5 +66,23 @@ public class StudentRegistrationController implements Initializable {
     @FXML
     public void btnSubmitOnAction(ActionEvent event) {
         RegistrationInfo registrationInfo = new RegistrationInfo(txtFullName.getText(), txtEmail.getText(), selectedGender, selectedCourse);
+        System.out.println("Full Name: " + registrationInfo.getFullName());
+        System.out.println("Email: " + registrationInfo.getEmail());
+        System.out.println("Gender: " + registrationInfo.getGender());
+        System.out.println("Course: " + registrationInfo.getCourse());
+    }
+
+    @FXML
+    public void btnViewDetailsOnAction(ActionEvent event) {
+        //
+    }
+
+    @FXML
+    public void btnResetOnAction(ActionEvent event) {
+        txtFullName.setText("");
+        txtEmail.setText("");
+        combobxCourse.getSelectionModel().selectFirst();
+        btnMaleSelect.setSelected(false);
+        btnFemaleSelect.setSelected(false);
     }
 }

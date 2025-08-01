@@ -41,7 +41,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button layoutX="245.0" layoutY="285.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="83.0" text="RESET">
+      <Button fx:id="btnReset" layoutX="245.0" layoutY="285.0" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="52.0" prefWidth="83.0" text="RESET">
          <effect>
             <InnerShadow>
                <color>
@@ -50,7 +50,7 @@
             </InnerShadow>
          </effect>
       </Button>
-      <Button fx:id="btnSubmit" layoutX="473.0" layoutY="285.0" mnemonicParsing="false" onAction="#btnSubmitOnAction" prefHeight="52.0" prefWidth="83.0" text="SUBMIT">
+      <Button fx:id="btnSubmit" layoutX="355.0" layoutY="285.0" mnemonicParsing="false" onAction="#btnSubmitOnAction" prefHeight="52.0" prefWidth="83.0" text="SUBMIT">
          <effect>
             <InnerShadow>
                <color>
@@ -65,5 +65,14 @@
          </toggleGroup>
       </RadioButton>
       <RadioButton fx:id="btnFemaleSelect" layoutX="287.0" layoutY="191.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="74.0" text="Female" toggleGroup="$genderSelect" />
+      <Button fx:id="btnViewDetails" layoutX="466.0" layoutY="285.0" mnemonicParsing="false" onAction="#btnViewDetailsOnAction" prefHeight="52.0" prefWidth="109.0" text="VIEW DETAILS">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.16563349962234497" green="0.05040000006556511" blue="0.8399999737739563" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Button>
    </children>
 </AnchorPane>
