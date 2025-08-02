@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
    <children>
       <Label alignment="CENTER" layoutX="253.0" layoutY="30.0" prefHeight="47.0" prefWidth="94.0" text="Login">
@@ -29,7 +28,7 @@
       <PasswordField fx:id="txtPassword" layoutX="226.0" layoutY="196.0" />
       <Button fx:id="btnLogin" alignment="CENTER" layoutX="261.0" layoutY="302.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="58.0" prefWidth="77.0" text="Login">
          <font>
-            <Font name="WinCC_flexible" size="14.0" />
+            <Font name="WinCC_flexible" size="15.0" />
          </font>
       </Button>
    </children>

@@ -2,28 +2,47 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TableSummaryController">
    <children>
-      <TreeTableView layoutX="8.0" layoutY="100.0" prefHeight="200.0" prefWidth="583.0">
-        <columns>
-          <TreeTableColumn fx:id="colFullName" prefWidth="192.0" text="Full Name" />
-          <TreeTableColumn fx:id="colEmail" prefWidth="176.79998779296875" text="Email" />
-            <TreeTableColumn fx:id="colGender" prefWidth="93.60003662109375" text="Gender" />
-            <TreeTableColumn fx:id="colCourse" prefWidth="120.7999267578125" text="Course" />
-        </columns>
-      </TreeTableView>
       <Label layoutX="202.0" layoutY="35.0" text="Registration Summary">
          <font>
             <Font size="20.0" />
          </font>
+         <effect>
+            <Bloom threshold="1.0" />
+         </effect>
       </Label>
-      <Button fx:id="btnBackToRegistration" layoutX="86.0" layoutY="335.0" mnemonicParsing="false" onAction="#btnBackToRegistrationOnAction" prefHeight="26.0" prefWidth="213.0" text="BACK TO REGISTRATION" />
-      <Button fx:id="btnReload" layoutX="397.0" layoutY="336.0" mnemonicParsing="false" onAction="#btnReloadOnAction" text="RELOAD" />
+      <Button fx:id="btnBackToRegistration" alignment="CENTER" layoutX="86.0" layoutY="335.0" mnemonicParsing="false" onAction="#btnBackToRegistrationOnAction" prefHeight="26.0" prefWidth="213.0" text="BACK TO REGISTRATION">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.8736842274665833" green="0.35270956158638" blue="0.35270956158638" />
+               </color>
+            </DropShadow>
+         </effect></Button>
+      <Button fx:id="btnReload" alignment="CENTER" layoutX="397.0" layoutY="336.0" mnemonicParsing="false" onAction="#btnReloadOnAction" text="RELOAD">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.26538336277008057" green="0.8947368264198303" blue="0.18226121366024017" />
+               </color>
+            </DropShadow>
+         </effect></Button>
+      <TableView fx:id="tblSummary" layoutX="60.0" layoutY="91.0" prefHeight="200.0" prefWidth="505.0">
+        <columns>
+          <TableColumn fx:id="colFullName" prefWidth="143.20001220703125" text="Full Name" />
+          <TableColumn fx:id="colEmail" prefWidth="127.20001220703125" text="Email" />
+            <TableColumn fx:id="colGender" prefWidth="111.20001220703125" text="Gender" />
+            <TableColumn fx:id="colCourse" prefWidth="124.00006103515625" text="Course" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

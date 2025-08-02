@@ -36,7 +36,7 @@ public class StudentRegistrationController implements Initializable {
     public Button btnReset;
 
     @FXML
-    private ComboBox<String> combobxCourse;
+    private ComboBox<String> cmbCourse;
 
     @FXML
     private TextField txtFullName;
@@ -52,11 +52,11 @@ public class StudentRegistrationController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> items = FXCollections.observableArrayList(
-                "ICM", "ICD", "ICP"
+                "-", "ICM", "ICD", "ICP"
         );
-        combobxCourse.setItems(items);
-        combobxCourse.getSelectionModel().selectFirst();
-        combobxCourse.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        cmbCourse.setItems(items);
+        cmbCourse.getSelectionModel().selectFirst();
+        cmbCourse.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 this.selectedCourse = newValue;
             }
@@ -72,6 +72,7 @@ public class StudentRegistrationController implements Initializable {
 
     @FXML
     public void btnSubmitOnAction(ActionEvent event) {
+        // when submit button pressed new object needs to be stored and displayed in the summary table.
         RegistrationInfo registrationInfo = new RegistrationInfo(txtFullName.getText(), txtEmail.getText(), selectedGender, selectedCourse);
         System.out.println("Full Name: " + registrationInfo.getFullName());
         System.out.println("Email: " + registrationInfo.getEmail());
@@ -95,7 +96,7 @@ public class StudentRegistrationController implements Initializable {
     public void btnResetOnAction(ActionEvent event) {
         txtFullName.setText("");
         txtEmail.setText("");
-        combobxCourse.getSelectionModel().selectFirst();
+        cmbCourse.getSelectionModel().selectFirst();
         btnMaleSelect.setSelected(false);
         btnFemaleSelect.setSelected(false);
     }
