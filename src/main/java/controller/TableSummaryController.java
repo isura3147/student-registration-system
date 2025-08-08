@@ -13,7 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import model.RegistrationInfo;
+import model.dto.RegistrationInfo;
 
 import java.io.IOException;
 import java.net.URL;
@@ -56,24 +56,23 @@ public class TableSummaryController implements Initializable {
         stage.show();
     }
 
-    @FXML
-    void btnReloadOnAction(ActionEvent event) {
-        colFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
-        colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        colGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
-        colCourse.setCellValueFactory(new PropertyValueFactory<>("course"));
-
-        tblSummary.setItems(registrationInfos);
-    }
-
     ObservableList<RegistrationInfo> registrationInfos = FXCollections.observableArrayList(
             new RegistrationInfo("Isura", "isura@gmail.com", "Male", "ICD"),
             new RegistrationInfo("Nirmala", "nirmala@yahoo.com", "Male", "ICM"),
             new RegistrationInfo("Anuki", "anuki@hotmail.com", "Female", "ICP")
     );
 
+    @FXML
+    void btnReloadOnAction(ActionEvent event) {
+        setItems();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setItems();
+    }
+
+    public void setItems() {
         colFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colGender.setCellValueFactory(new PropertyValueFactory<>("gender"));

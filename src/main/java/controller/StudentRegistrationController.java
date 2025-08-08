@@ -1,5 +1,6 @@
 package controller;
 
+import com.jfoenix.controls.JFXCheckBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,7 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import model.RegistrationInfo;
+import model.dto.RegistrationInfo;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,10 +25,10 @@ public class StudentRegistrationController implements Initializable {
     public Button btnSubmit;
 
     @FXML
-    public RadioButton btnMaleSelect;
+    public JFXCheckBox btnMaleSelect;
 
     @FXML
-    public RadioButton btnFemaleSelect;
+    public JFXCheckBox btnFemaleSelect;
 
     @FXML
     public Button btnViewDetails;
@@ -62,17 +63,34 @@ public class StudentRegistrationController implements Initializable {
             }
         });
 
-        genderSelect.selectedToggleProperty().addListener((observable, oldToggle, newToggle) -> {
-            if (newToggle != null) {
-                RadioButton selectedButton = (RadioButton) newToggle;
-                this.selectedGender = selectedButton.getText();
+        btnMaleSelect.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                btnFemaleSelect.setSelected(false);
+                selectedGender = btnMaleSelect.getText();
+            } else if (!btnFemaleSelect.isSelected()) {
+                selectedGender = null;
+            }
+        });
+
+        btnFemaleSelect.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                btnMaleSelect.setSelected(false);
+                selectedGender = btnFemaleSelect.getText();
+            } else if (!btnMaleSelect.isSelected()) {
+                selectedGender = null;
             }
         });
     }
 
     @FXML
     public void btnSubmitOnAction(ActionEvent event) {
-        // when submit button pressed new object needs to be stored and displayed in the summary table.
+        if (btnMaleSelect.isSelected()) {
+            selectedGender = "Male";
+        } else if (btnFemaleSelect.isSelected()) {
+            selectedGender = "Female";
+        } else {
+            selectedGender = null; // or some default value
+        }
         RegistrationInfo registrationInfo = new RegistrationInfo(txtFullName.getText(), txtEmail.getText(), selectedGender, selectedCourse);
         System.out.println("Full Name: " + registrationInfo.getFullName());
         System.out.println("Email: " + registrationInfo.getEmail());
@@ -99,5 +117,6 @@ public class StudentRegistrationController implements Initializable {
         cmbCourse.getSelectionModel().selectFirst();
         btnMaleSelect.setSelected(false);
         btnFemaleSelect.setSelected(false);
+        selectedGender = null;
     }
 }

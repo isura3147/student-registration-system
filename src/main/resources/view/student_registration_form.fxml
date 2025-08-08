@@ -1,78 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="358.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentRegistrationController">
+<AnchorPane prefHeight="358.0" prefWidth="577.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentRegistrationController">
    <children>
-      <Label alignment="CENTER" layoutX="212.0" layoutY="33.0" prefHeight="43.0" prefWidth="175.0" text="Registration Form">
+      <Label alignment="CENTER" layoutX="203.0" layoutY="37.0" prefHeight="43.0" prefWidth="175.0" text="Registration Form" textFill="#33a4dc">
          <font>
             <Font name="Calisto MT Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="84.0" layoutY="106.0" text="Full Name">
+      <Label layoutX="84.0" layoutY="107.0" text="Full Name">
          <font>
-            <Font size="15.0" />
+            <Font name="Courier New" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="84.0" layoutY="149.0" prefHeight="18.0" prefWidth="54.0" text="Email">
+      <Label layoutX="84.0" layoutY="150.0" prefHeight="18.0" prefWidth="54.0" text="Email">
          <font>
-            <Font size="15.0" />
+            <Font name="Courier New" size="16.0" />
          </font>
       </Label>
       <TextField fx:id="txtFullName" layoutX="212.0" layoutY="104.0" />
       <TextField fx:id="txtEmail" layoutX="212.0" layoutY="147.0" />
-      <Label layoutX="84.0" layoutY="189.0" prefHeight="18.0" prefWidth="54.0" text="Gender">
+      <Label layoutX="84.0" layoutY="189.0" prefHeight="19.0" prefWidth="64.0" text="Gender">
          <font>
-            <Font size="15.0" />
+            <Font name="Courier New" size="16.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cmbCourse" layoutX="212.0" layoutY="231.0" prefWidth="150.0" />
-      <Label layoutX="84.0" layoutY="233.0" prefHeight="18.0" prefWidth="54.0" text="Course">
+      <Label layoutX="84.0" layoutY="233.0" prefHeight="19.0" prefWidth="64.0" text="Course">
          <font>
-            <Font size="15.0" />
+            <Font name="Courier New" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="btnReset" layoutX="245.0" layoutY="285.0" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="52.0" prefWidth="83.0" text="RESET">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.9473684430122375" green="0.021052632480859756" blue="0.021052632480859756" />
-               </color>
-            </InnerShadow>
-         </effect>
-      </Button>
-      <Button fx:id="btnSubmit" layoutX="355.0" layoutY="285.0" mnemonicParsing="false" onAction="#btnSubmitOnAction" prefHeight="52.0" prefWidth="83.0" text="SUBMIT">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.21910330653190613" green="0.8421052694320679" blue="0.046783626079559326" />
-               </color>
-            </InnerShadow>
-         </effect>
-      </Button>
-      <RadioButton fx:id="btnMaleSelect" layoutX="212.0" layoutY="191.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="61.0" text="Male">
-         <toggleGroup>
-            <ToggleGroup fx:id="genderSelect" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton fx:id="btnFemaleSelect" layoutX="287.0" layoutY="191.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="74.0" text="Female" toggleGroup="$genderSelect" />
-      <Button fx:id="btnViewDetails" layoutX="466.0" layoutY="285.0" mnemonicParsing="false" onAction="#btnViewDetailsOnAction" prefHeight="52.0" prefWidth="109.0" text="VIEW DETAILS">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.16563349962234497" green="0.05040000006556511" blue="0.8399999737739563" />
-               </color>
-            </InnerShadow>
-         </effect>
-      </Button>
+      <JFXCheckBox fx:id="btnMaleSelect" checkedColor="#dca643" layoutX="212.0" layoutY="190.0" text="Male" />
+      <JFXCheckBox fx:id="btnFemaleSelect" checkedColor="#d739bf" layoutX="296.0" layoutY="190.0" text="Female" />
+      <JFXComboBox fx:id="cmbCourse" focusColor="#6186f7" labelFloat="true" layoutX="210.0" layoutY="231.0" prefHeight="26.0" prefWidth="150.0" promptText="select course" />
+      <JFXButton fx:id="btnSubmit" buttonType="RAISED" layoutX="351.0" layoutY="298.0" onAction="#btnSubmitOnAction" text="Submit">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.7270175218582153" green="0.8842105269432068" blue="0.7532163858413696" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.046315789222717285" green="0.6947368383407593" blue="0.10035087913274765" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Serif Regular" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnViewDetails" buttonType="RAISED" layoutX="439.0" layoutY="298.0" onAction="#btnViewDetailsOnAction" text="View Details">
+         <font>
+            <Font name="Serif Regular" size="15.0" />
+         </font>
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.5698245763778687" green="0.74273681640625" blue="0.8842105269432068" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.18888889253139496" green="0.4322222173213959" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
+      <JFXButton fx:id="btnReset" buttonType="RAISED" layoutX="264.0" layoutY="298.0" onAction="#btnResetOnAction" text="Reset">
+         <font>
+            <Font name="Serif Regular" size="15.0" />
+         </font>
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8315789699554443" green="0.6899025440216064" blue="0.6899025440216064" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9368420839309692" green="0.19430799782276154" blue="0.19430799782276154" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
    </children>
 </AnchorPane>
