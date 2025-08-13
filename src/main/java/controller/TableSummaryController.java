@@ -17,9 +17,7 @@ import model.dto.RegistrationInfo;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class TableSummaryController implements Initializable {
@@ -62,11 +60,7 @@ public class TableSummaryController implements Initializable {
         stage.show();
     }
 
-    ObservableList<RegistrationInfo> registrationInfos = FXCollections.observableArrayList(
-            new RegistrationInfo("S001","Isura", "isura@gmail.com", "Male", "ICD"),
-            new RegistrationInfo("S002","Nirmala", "nirmala@yahoo.com", "Male", "ICM"),
-            new RegistrationInfo("S003", "Anuki", "anuki@hotmail.com", "Female", "ICP")
-    );
+    ObservableList<RegistrationInfo> registrationInfos = FXCollections.observableArrayList();
 
     @FXML
     void btnReloadOnAction(ActionEvent event) {
@@ -79,9 +73,23 @@ public class TableSummaryController implements Initializable {
     }
 
     public void setItems() {
-
+        tblSummary.getItems().clear();
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentinformation", "root", "isura1234");
+            String SQL = "SELECT * FROM studentinfo;";
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                RegistrationInfo registrationInfo = new RegistrationInfo(
+                        resultSet.getString("studentId"),
+                        resultSet.getString("fullName"),
+                        resultSet.getString("email"),
+                        String.valueOf(resultSet.getBoolean("gender")),
+                        resultSet.getString("course")
+                );
+                registrationInfos.add(registrationInfo);
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
