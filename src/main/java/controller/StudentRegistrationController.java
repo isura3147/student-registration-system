@@ -37,6 +37,9 @@ public class StudentRegistrationController implements Initializable {
     public Button btnReset;
 
     @FXML
+    public TextField txtStudentId;
+
+    @FXML
     private ComboBox<String> cmbCourse;
 
     @FXML
@@ -91,7 +94,8 @@ public class StudentRegistrationController implements Initializable {
         } else {
             selectedGender = null; // or some default value
         }
-        RegistrationInfo registrationInfo = new RegistrationInfo(txtFullName.getText(), txtEmail.getText(), selectedGender, selectedCourse);
+        RegistrationInfo registrationInfo = new RegistrationInfo(txtStudentId.getText(), txtFullName.getText(), txtEmail.getText(), selectedGender, selectedCourse);
+        System.out.println("Student ID: " + registrationInfo.getId());
         System.out.println("Full Name: " + registrationInfo.getFullName());
         System.out.println("Email: " + registrationInfo.getEmail());
         System.out.println("Gender: " + registrationInfo.getGender());
@@ -112,6 +116,7 @@ public class StudentRegistrationController implements Initializable {
 
     @FXML
     public void btnResetOnAction(ActionEvent event) {
+        txtStudentId.setText("");
         txtFullName.setText("");
         txtEmail.setText("");
         cmbCourse.getSelectionModel().selectFirst();
