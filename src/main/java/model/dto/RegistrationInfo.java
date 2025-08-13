@@ -10,6 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegistrationInfo {
+    private String id;
     private String fullName;
     private String email;
     private String gender;
