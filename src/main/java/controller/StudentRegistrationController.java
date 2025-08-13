@@ -15,6 +15,10 @@ import model.dto.RegistrationInfo;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class StudentRegistrationController implements Initializable {
@@ -48,7 +52,6 @@ public class StudentRegistrationController implements Initializable {
     @FXML
     private TextField txtEmail;
 
-    private String selectedCourse;
     private String selectedGender;
 
     Stage stage = new Stage();
@@ -60,11 +63,6 @@ public class StudentRegistrationController implements Initializable {
         );
         cmbCourse.setItems(items);
         cmbCourse.getSelectionModel().selectFirst();
-        cmbCourse.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                this.selectedCourse = newValue;
-            }
-        });
 
         btnMaleSelect.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
@@ -87,19 +85,19 @@ public class StudentRegistrationController implements Initializable {
 
     @FXML
     public void btnSubmitOnAction(ActionEvent event) {
-        if (btnMaleSelect.isSelected()) {
-            selectedGender = "Male";
-        } else if (btnFemaleSelect.isSelected()) {
-            selectedGender = "Female";
-        } else {
-            selectedGender = null; // or some default value
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentinformation", "root", "isura1234");
+            String SQL = "INSERT INTO studentinfo VALUES(?, ?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setObject(1, txtStudentId.getText());
+            preparedStatement.setObject(2, txtFullName.getText());
+            preparedStatement.setObject(3, txtEmail.getText());
+            preparedStatement.setObject(4, gender(selectedGender));
+            preparedStatement.setObject(5, cmbCourse.getValue());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        RegistrationInfo registrationInfo = new RegistrationInfo(txtStudentId.getText(), txtFullName.getText(), txtEmail.getText(), selectedGender, selectedCourse);
-        System.out.println("Student ID: " + registrationInfo.getId());
-        System.out.println("Full Name: " + registrationInfo.getFullName());
-        System.out.println("Email: " + registrationInfo.getEmail());
-        System.out.println("Gender: " + registrationInfo.getGender());
-        System.out.println("Course: " + registrationInfo.getCourse());
     }
 
     @FXML
@@ -123,5 +121,9 @@ public class StudentRegistrationController implements Initializable {
         btnMaleSelect.setSelected(false);
         btnFemaleSelect.setSelected(false);
         selectedGender = null;
+    }
+
+    public boolean gender(String gender) {
+        return gender.equals("Male") ? true : false;
     }
 }

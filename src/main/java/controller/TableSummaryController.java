@@ -85,7 +85,7 @@ public class TableSummaryController implements Initializable {
                         resultSet.getString("studentId"),
                         resultSet.getString("fullName"),
                         resultSet.getString("email"),
-                        String.valueOf(resultSet.getBoolean("gender")),
+                        gender(String.valueOf(resultSet.getBoolean("gender"))),
                         resultSet.getString("course")
                 );
                 registrationInfos.add(registrationInfo);
@@ -101,5 +101,9 @@ public class TableSummaryController implements Initializable {
         colCourse.setCellValueFactory(new PropertyValueFactory<>("course"));
 
         tblSummary.setItems(registrationInfos);
+    }
+
+    public String gender(String gender) {
+        return gender.equals("true") ? "Male" : "Female";
     }
 }
